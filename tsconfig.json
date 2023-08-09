@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["ES6"],
+    "types": ["reflect-metadata"],
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts", "src/schema/schema.grapghql"],
+  "exclude": ["node_modules", ".vscode"]
+}
