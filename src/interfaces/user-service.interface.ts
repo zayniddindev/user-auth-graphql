@@ -5,7 +5,7 @@ export interface IChangePasswordPayload {
 }
 
 export interface IUserResolvers {
-  me(_id: number): Promise<IUser>;
+  me(_id: string): Promise<IUser>;
 
-  changePassword(_id: number, payload: IChangePasswordPayload): Promise<boolean>;
+  changePassword(_id: string, payload: IChangePasswordPayload): Promise<boolean>;
 }

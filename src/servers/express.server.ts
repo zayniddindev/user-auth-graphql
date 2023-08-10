@@ -2,18 +2,21 @@ import { inject, injectable } from "inversify";
 import TYPES from "../ioc/types";
 import { GraphqlServer } from "./graphql.server";
 import express from "express";
+import { DatabasePersistence } from "../persistence";
 
 @injectable()
 export class ExpressServer {
   private expressServer: express.Express;
-  private graphqlServer: GraphqlServer;
-  constructor(@inject(TYPES.GraphqlServerToken) graphqlServer: GraphqlServer) {
-    this.graphqlServer = graphqlServer;
+  constructor(
+    @inject(TYPES.GraphqlServerToken) private readonly graphqlServer: GraphqlServer,
+    @inject(TYPES.DatabasePersistenceToken) private readonly database: DatabasePersistence
+  ) {
     this.expressServer = express();
   }
 
   async start() {
     this.graphqlServer.server = this.expressServer;
-    this.graphqlServer.start();
+    await this.database.connect();
+    await this.graphqlServer.start();
   }
 }

@@ -7,4 +7,5 @@ export const env = cleanEnv(process.env, {
   DB_NAME: str(),
   JWT_SECRET: str(),
   JWT_EXPIRES_IN: str(),
+  TWOFA_APP_NAME: str(),
 });

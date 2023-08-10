@@ -8,7 +8,6 @@ import { Resolvers } from "../resolvers";
 import { inject, injectable } from "inversify";
 import TYPES from "../ioc/types";
 import { AuthResolvers } from "../resolvers/auth.resolver";
-import { GraphQLError } from "graphql";
 
 @injectable()
 export class GraphqlServer {
@@ -32,7 +31,7 @@ export class GraphqlServer {
     const { url } = await startStandaloneServer(server, {
       context: async ({ req }) => {
         const token = req.headers.authorization || "";
-        const user = await this.authResolver.vaidateToken(token);
+        const user = await this.authResolver.vaidateJWTToken(token);
         return { user };
       },
     });

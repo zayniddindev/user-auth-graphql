@@ -4,8 +4,7 @@ import TYPES from "./types";
 import { AuthResolvers } from "../resolvers/auth.resolver";
 import { GraphqlServer, ExpressServer } from "../servers";
 import { Resolvers } from "../resolvers";
-import { DatabasePersistence } from "../persistence";
-import { UsersPersistence } from "../persistence/users.persistence";
+import { DatabasePersistence, UsersPersistence } from "../persistence";
 import { UserResolvers } from "../resolvers/user.resolvers";
 
 export const container = new Container();
